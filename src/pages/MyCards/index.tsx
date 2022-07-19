@@ -76,7 +76,7 @@ export default function MyCards() {
   }, [loadAnime, navigate, username]);
 
   return (
-    <section className={styles.container}>
+    <main className={styles.container}>
       <header className={styles.header}>
         <div>
           <Button
@@ -90,11 +90,7 @@ export default function MyCards() {
         <h1>{username}</h1>
       </header>
 
-      {isLoading ? (
-        <div className={styles.loaderContainer}>
-          <Loader />
-        </div>
-      ) : (
+      <section className={styles.content}>
         <ul className={styles.cardsContainer}>
           {cards?.map((card) => (
             <Card
@@ -106,7 +102,7 @@ export default function MyCards() {
             />
           ))}
         </ul>
-      )}
-    </section>
+      </section>
+    </main>
   );
 }
