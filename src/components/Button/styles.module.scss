@@ -1,4 +1,5 @@
-.button {
+@mixin button {
+  height: 42px;
   padding: 12px 14px;
 
   background-color: var(--main);
@@ -23,5 +24,34 @@
   &[disabled] {
     opacity: 0.5;
     cursor: default;
+  }
+}
+
+.loaded {
+  @include button;
+
+  background-color: var(--main);
+  color: var(--title);
+}
+
+.loading {
+  @include button;
+
+  background-color: var(--surface);
+
+  padding: 12px 32px;
+
+  cursor: default;
+
+  &:hover:not([disabled]) {
+    filter: none;
+  }
+
+  &:active:not([disabled]) {
+    filter: none;
+  }
+
+  &[disabled] {
+    opacity: 1;
   }
 }

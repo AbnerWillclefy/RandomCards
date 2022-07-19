@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button";
 import Card from "../../components/Card";
-import Loader from "../../components/Loader";
 import { useUser } from "../../contexts/UserContext";
 
 import { getAnime } from "../../services/anime";
@@ -19,7 +18,6 @@ export default function MyCards() {
   const [cards, setCards] = useState<CardsData[]>([]);
   const [pulledCardsTimes, setPulledCardsTimes] = useState(0);
 
-  const [isLoading, setIsLoading] = useState(true);
   const [isLoadingNewCard, setIsLoadingNewCard] = useState(false);
 
   const navigate = useNavigate();
@@ -51,7 +49,7 @@ export default function MyCards() {
     setPulledCardsTimes((prevState) => prevState + 1);
   }
 
-  function randomSortCards() {
+  function handleRandomSortCards() {
     const currentCardsArray = [...cards];
 
     const randomSortedCardsArray = currentCardsArray
@@ -70,9 +68,7 @@ export default function MyCards() {
       navigate("/");
     }
 
-    Promise.all(Array.from(new Array(5), () => loadAnime())).finally(() =>
-      setIsLoading(false)
-    );
+    Promise.all(Array.from(new Array(5), () => loadAnime()));
   }, [loadAnime, navigate, username]);
 
   return (
@@ -81,11 +77,12 @@ export default function MyCards() {
         <div>
           <Button
             onClick={handlePullCard}
-            disabled={!canPullAnotherCard || isLoadingNewCard}
+            disabled={!canPullAnotherCard}
+            isLoading={isLoadingNewCard}
           >
             Nova carta
           </Button>
-          <Button onClick={randomSortCards}>Embaralhar cartas</Button>
+          <Button onClick={handleRandomSortCards}>Embaralhar cartas</Button>
         </div>
         <h1>{username}</h1>
       </header>

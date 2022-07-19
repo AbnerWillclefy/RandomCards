@@ -23,6 +23,9 @@
   padding: 16px;
 
   > div {
+    display: flex;
+    align-items: center;
+
     button + button {
       margin-left: 8px;
     }
