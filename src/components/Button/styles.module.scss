@@ -1,0 +1,27 @@
+.button {
+  padding: 12px 14px;
+
+  background-color: var(--main);
+  color: var(--title);
+
+  border: none;
+  border-radius: 4px;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  transition: filter 0.2s;
+
+  &:hover:not([disabled]) {
+    filter: brightness(1.2);
+  }
+
+  &:active:not([disabled]) {
+    filter: brightness(0.8);
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: default;
+  }
+}

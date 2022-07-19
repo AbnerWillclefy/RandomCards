@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #121212;
+  --title: #ffffff;
+  --main: #7783ee;
+  --surface: #222222;
+  --input: #373737;
+  --text: #bcbcbc;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+
+  background: var(--background);
+  color: var(--text);
+}
