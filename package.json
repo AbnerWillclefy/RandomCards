@@ -2,7 +2,7 @@
   "name": "randomcards",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://abnerwillclefy.github.io",
+  "homepage": "https://abnerwillclefy.github.io/RandomCards/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
