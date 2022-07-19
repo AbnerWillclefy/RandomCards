@@ -1,7 +1,6 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Provider from "./Providers";
+import Provider from "./providers";
 import AppRoutes from "./routes";
 
 import "./styles/global.scss";

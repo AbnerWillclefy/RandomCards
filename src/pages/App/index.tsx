@@ -16,7 +16,7 @@ function App() {
 
   return (
     <section className={styles.container}>
-      <h1>Antes de tudo, digite seu nome!</h1>
+      <h1>Digite seu nome para ver suas cartas.</h1>
 
       <input
         type="text"

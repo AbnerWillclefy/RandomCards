@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Loader from "../../components/Loader";
@@ -19,6 +21,8 @@ export default function MyCards() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingNewCard, setIsLoadingNewCard] = useState(false);
+
+  const navigate = useNavigate();
 
   const { username } = useUser();
 
@@ -62,10 +66,14 @@ export default function MyCards() {
   }
 
   useEffect(() => {
+    if (!username) {
+      navigate("/");
+    }
+
     Promise.all(Array.from(new Array(5), () => loadAnime())).finally(() =>
       setIsLoading(false)
     );
-  }, [loadAnime]);
+  }, [loadAnime, navigate, username]);
 
   return (
     <section className={styles.container}>
