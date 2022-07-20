@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button";
@@ -27,11 +27,13 @@ export default function MyCards() {
 
   const canPullAnotherCard = pulledCardsTimes < 3;
 
-  const totalPoints = cards
-    .reduce((acc, card) => {
-      return acc + card.points;
-    }, 0)
-    .toFixed(2);
+  const totalPoints = useMemo(() => {
+    return cards
+      .reduce((acc, card) => {
+        return acc + card.points;
+      }, 0)
+      .toFixed(2);
+  }, [cards]);
 
   const loadAnime = useCallback(async () => {
     const data = await getAnime();
