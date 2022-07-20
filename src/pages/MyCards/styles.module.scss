@@ -44,11 +44,20 @@
   }
 }
 
+.points {
+  margin-bottom: 16px;
+
+  color: var(--main);
+
+  animation: fade 0.5s ease-in;
+}
+
 .content {
   height: 100%;
 
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .loaderContainer {
@@ -68,4 +77,15 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }

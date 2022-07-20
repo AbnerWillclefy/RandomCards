@@ -19,12 +19,19 @@ export default function MyCards() {
   const [pulledCardsTimes, setPulledCardsTimes] = useState(0);
 
   const [isLoadingNewCard, setIsLoadingNewCard] = useState(false);
+  const [isLoadingCardList, setIsLoadingCardList] = useState(true);
 
   const navigate = useNavigate();
 
   const { username } = useUser();
 
   const canPullAnotherCard = pulledCardsTimes < 3;
+
+  const totalPoints = cards
+    .reduce((acc, card) => {
+      return acc + card.points;
+    }, 0)
+    .toFixed(2);
 
   const loadAnime = useCallback(async () => {
     const data = await getAnime();
@@ -68,7 +75,9 @@ export default function MyCards() {
       navigate("/");
     }
 
-    Promise.all(Array.from(new Array(5), () => loadAnime()));
+    Promise.all(Array.from(new Array(5), () => loadAnime())).then(() =>
+      setIsLoadingCardList(false)
+    );
   }, [loadAnime, navigate, username]);
 
   return (
@@ -88,6 +97,10 @@ export default function MyCards() {
       </header>
 
       <section className={styles.content}>
+        {!isLoadingCardList && (
+          <h1 className={styles.points}>{totalPoints} pontos</h1>
+        )}
+
         <ul className={styles.cardsContainer}>
           {cards?.map((card) => (
             <Card
